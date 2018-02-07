@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="shortcut icon" sizes="64x64" href="assets/images/favi-ect.png">
+    <title>#Realize</title>
+</head>
+
+<body>
+    <header>
+        <div class="titulo-sistema">
+            #Realize
+        </div>
+        <div class="separador"></div>
+        <a id="logo" ui-sref="home.main"></a>
+    </header>
+    <cs-usuario-info></cs-usuario-info>
+    <div id="header-fixo" cs-usuario-info >
+        <a id="nav-menu"></a>
+        <a id="home" ui-sref="home.main"></a>
+        <div class="usuario" ng-bind="usuarioInfoController.nome">
+                
+        </div>
+        <a class="sair" ng-click="usuarioInfoController.logout()">Sair</a>
+        <a class="ajuda">Ajuda</a>
+        <a class="detalhes-usuario"></a>
+        <section id="opcoes-usuario-logado" class="none">
+            
+            <a ng-click="usuarioInfoController.logout()">Sair</a>
+            <a>Ajuda</a>
+
+        </section>
+    </div>
+    <cs-menu></cs-menu>
+    <div id="breadcrumb" ncy-breadcrumb></div>
+    <section id="geral">
+        <cs-message></cs-message>
+        <div ui-view></div>
+    </section>
+    <footer></footer>
+    <div id="alerta">
+        <div></div>
+        <a></a>
+    </div>
+
+
+</body>
+
+</html>

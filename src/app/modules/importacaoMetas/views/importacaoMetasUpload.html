@@ -1,0 +1,72 @@
+<div class="container">
+    <br>
+    <h1>Importação de Metas das Agências</h1>
+
+    <br>
+    <div class="form">
+        <form name="form">
+            <div class="row">
+                <div class="form-group">
+                <div class="col-md-8">
+                    <label>Tipo de importação:*</label>
+                    <select class="form-control"
+                            ng-options="item as item.descricao for item in vm.model.filtros.tipoSituacaoImportacaoMeta track by item.descricao"
+                            ng-model="vm.model.dadoSelecionado.tipoSelecionado">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label>Ano:*</label>
+                    <select class="form-control"
+                            ng-options="item as item for item in vm.model.filtros.anoReferencia track by item"
+                            ng-model="vm.model.dadoSelecionado.anoSelecionado">
+                        <option value="">Selecione</option>
+                    </select>
+                </div>
+
+                <!--InputFile-->
+                <div class="col-md-8">
+                    <br>
+                    <input accept="/*" name="file" ngf-max-size="50MB" ngf-select
+                           type="file" id="file" ng-model="vm.file" ngf-pattern="'.xls,.csv,.xlsx'" accept=".csv" />
+                    <small id="fileHelp" class="form-text text-muted">Selecione o arquivo .csv desejado.</small>
+                </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="botoes">
+        <a class="btn btn-primary" id="btImportar" ng-click="vm.importarArquivo()">Importar</a>
+    </div>
+</div>
+
+<div class="container" ng-show="vm.model.listaArquivos">
+    <h1>Dados da Importação</h1>
+
+     <table>
+        <thead>
+        <tr>
+            <th> Data da Importação </th>
+            <th> Nome do Arquivo </th>
+            <th> Tipo de Importação </th>
+            <th> Status </th>
+            <th> Motivo da Falha </th>
+            <th> Matrícula </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr ng-repeat="item in vm.model.listaArquivos | orderBy:'dataImportacao'">
+            <td id="dataImportacao" ng-bind="item.dataImportacao"></td>
+            <td id="nomeArquivo" ng-bind="item.nomeArquivo"></td>
+            <td id="tipoMeta" ng-bind="item.tipoArquivoMeta.descricao"></td>
+            <td id="tipoSituacao" ng-bind="item.tipoSituacaoImportacaoMetaEnum.descricao"></td>
+            <td id="motivoFalha" ng-bind="item.motivoFalha"></td>
+            <td id="uuarioMatricula" ng-bind="item.usuarioNu"></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
